@@ -243,7 +243,8 @@ def run(scene_dir, num_clients=5, rounds=5, iters=40, batch=256, device="cpu"):
     plt.plot(range(1, rounds + 1), avg_losses, marker="o")
     plt.xlabel("Round")
     plt.ylabel("Average Loss")
-    plt.title("DecentNerfs Prototype (Trevi Fountain)")
+    #plt.title("DecentNerfs Prototype (Trevi Fountain)")
+    plt.title("DecentNerfs Prototype (NotreDame Cathedral)")
     plt.grid(True)
     plt.tight_layout()
     plt.savefig("outputs/training_curve.png", dpi=150)
@@ -256,4 +257,4 @@ def run(scene_dir, num_clients=5, rounds=5, iters=40, batch=256, device="cpu"):
     print("✅ Saved outputs/training_curve.png and alpha_weights.csv")
 
 if __name__ == "__main__":
-    run("./data/TreviNew", num_clients=5, rounds=5, iters=40, batch=256)
+    run("./data/NotreDame", num_clients=5, rounds=5, iters=40, batch=256)
