@@ -1,10 +1,11 @@
 # fl_utils.py
-from DecentNerfs import Client, ClientConfig, TinyNeRF, assign_from_flat
+import torch
+from DecentNerfs import Client, ClientConfig, TinyNeRF
 
 def init_global_state(device="cpu"):
     """
-    Create a fresh TinyNeRF and return its parameters as a list of tensors.
-    Suitable as an initial 'server_state' in federated settings.
+    Create a fresh TinyNeRF model and return its parameter tensors.
+    Flower uses this as the initial global model state.
     """
     model = TinyNeRF().to(device)
     return [p.detach().cpu().clone() for p in model.parameters()]
@@ -19,9 +20,9 @@ def local_train_round(
     device: str = "cpu",
 ):
     """
-    Helper wrapper to run ONE local training round for a single client
-    using your existing architecture.
-    Returns the same dict produced by Client.local_train().
+    Run ONE round of local training on the given scene (Trevi or NotreDame).
+    Uses your existing Client + ClientConfig code from DecentNerfs.py.
+    Returns the same dict as client.local_train().
     """
     cfg = ClientConfig(
         id=client_id,
