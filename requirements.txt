@@ -1,5 +1,6 @@
 torch>=2.0.0
-numpy
+numpy==1.26.4
+protobuf==3.20.3
 pillow
 matplotlib
-flwr==1.4.0
+flwr==1.5.0
