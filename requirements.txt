@@ -2,4 +2,4 @@ torch>=2.0.0
 numpy
 pillow
 matplotlib
-flwr
+flwr==1.5.0
